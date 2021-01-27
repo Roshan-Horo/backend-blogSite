@@ -5,7 +5,8 @@ import connectDB from './config/db.js'
 import { notFound, errorHandler} from './middlewares/errorMiddleware.js'
 //Routes
 import userRoutes from './routes/userRoute.js'
-
+import postsRoutes from './routes/postsRoute.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 
 
 const app = express()
@@ -18,6 +19,8 @@ connectDB()
 // API end Points
 
 app.use('/api/users', userRoutes)
+app.use('/api/posts', postsRoutes)
+app.use('/api/upload', uploadRoutes)
 
 
 app.get('/', (req,res) => {
