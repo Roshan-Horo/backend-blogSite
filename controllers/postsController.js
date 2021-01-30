@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler'
 import Post from '../models/postModel.js'
 
 const getPosts = asyncHandler(async (req,res) => {
-   const posts = await Post.find()
+   const posts = await Post.find({}).sort({createdAt: -1})
    res.json(posts)
 })
 
@@ -13,7 +13,6 @@ const getPostById = asyncHandler(async(req,res) => {
    }else{
       res.status(404)
       throw new Error('Post Not Found!')
-      
    }
 })
 
